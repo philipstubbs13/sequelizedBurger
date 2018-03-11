@@ -1,4 +1,4 @@
-// Import the model (burger.js) to use its database functions.
+// Import the model (burger.js) 
 var db = require("../models");
 
 //Require express
@@ -8,14 +8,14 @@ module.exports = function(app) {
   // Create all our routes and set up logic within those routes where required.
   //GET route to get burgers from database.
   app.get("/", function(req, res) {
-    db.Burger.findAll({
-    }).then(function(data) {
-      var hbsObject = {
-        burgers: data
-      };
-      console.log(hbsObject);
-      res.render("index", hbsObject);
-    });
+      db.Burger.findAll({}).then(function(results) {
+        //console.log(results);
+        res.render("index", {
+          burgers: results,
+        });
+      }).catch(function(err){
+        console.log(err);
+      }); 
   }); 
 
   //POST route to create/add a burger.
@@ -25,20 +25,23 @@ module.exports = function(app) {
     console.log("Burger name: " + req.body.burger_name);
     db.Burger.create({
       burger_name: req.body.burger_name
-    }).then(function(result) {
-      res.json({ id: result.insertId });
+    }).then(function(results) {
+      console.log(results);
+      //results here would be the newly created burger
+      res.redirect('/');
     });
   });
 
   //PUT route to update burger devoured state.
   app.put("/api/burgers/:id", function(req, res) {
     db.Burger.update({
-      devoured: req.body.devoured
+      devoured: true
     }, {
       where: {
         id: req.params.id
       }
-    }).then(function(dbResult) {
+    }).then(function(result) {
+      console.log(result);
       res.redirect("/");
     });
 });
