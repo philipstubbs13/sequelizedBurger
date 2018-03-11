@@ -1,4 +1,4 @@
-// Import the model (burger.js). test
+// Import the model (burger.js). 
 var db = require("../models");
 
 //Require express
@@ -42,14 +42,21 @@ module.exports = function(app) {
       }
     }).then(function(result) {
       console.log(result);
-      res.redirect("/");
+      res.end();
     });
 });
 
   // //DELETE route to throw away a burger.
-  // app.delete("/api/burgers/:id", function(req, res) {
+  app.delete("/api/burgers/:id", function(req, res) {
+    db.Burger.destroy ({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result){
+      res.end();
+    });   
+  });
 
-  // });
 }
 
 
