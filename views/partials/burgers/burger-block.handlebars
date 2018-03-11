@@ -1,6 +1,15 @@
-<!--Devour me button-->
-<button class="change-devour btn btn-primary" data-id="{{id}}" data-newdevour="{{devour}}">
-	<img src="/assets/img/devour.png" width=25px height=25px" class="mr-2"> Devour me
-</button>
+{{#each burgers}}
+	{{#unless devoured}}
+		<div class="mt-4">
+			<h4>{{this.burger_name}}</h4>
+			<!--Devour me button-->
+			<button class="change-devour btn btn-primary" data-id="{{id}}" data-newdevour="{{devour}}">
+				<img src="/assets/img/devour.png" width=25px height=25px" class="mr-2"> Devour me
+			</button>
+		</div>
+	{{/unless}}
+{{/each}}
+
+
 
 

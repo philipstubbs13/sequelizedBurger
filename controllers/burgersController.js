@@ -26,7 +26,7 @@ module.exports = function(app) {
     db.Burger.create({
       burger_name: req.body.burger_name
     }).then(function(results) {
-      console.log(results);
+      //console.log(results);
       //results here would be the newly created burger
       res.redirect('/');
     });

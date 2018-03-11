@@ -34,14 +34,7 @@
         </div>
         <!--Div to hold burgers that have not been devoured yet-->
         <div class="card-body">
-              {{#each burgers}}
-                {{#unless devoured}}
-                  <div class="mt-4">
-                    <h4>{{this.burger_name}}</h4>
-                    {{> burgers/burger-block devour=false}}
-                  </div>
-                {{/unless}}
-              {{/each}}
+          {{> burgers/burger-block devour=false}}
         </div>
       </div>
     </div>
@@ -53,11 +46,7 @@
         </div>
         <!--When a burger has been devoured, put burger here-->
         <div class="card-body">
-          {{#each burgers}}
-              {{#if devoured}}
-                {{> burgers/burger-devoured devour=true}}
-              {{/if}}
-          {{/each}}
+          {{> burgers/burger-devoured devour=true}}
         </div>
       </div>
     </div>
@@ -70,7 +59,7 @@
         <div class="card-body footer-body text-white">
           <h5 class="card-title text-white">Righteous Burger</h5>
           <p class="card-text">Welcome to Righteous Burger. Home of the Righteous Burger.</p>
-          <a href="https://github.com/philipstubbs13/burger" class="btn btn-primary mr-2" target="_blank">GitHub Repo</a>
+          <a href="https://github.com/philipstubbs13/sequelizedBurger" class="btn btn-primary mr-2" target="_blank">GitHub Repo</a>
           <a href="https://www.linkedin.com/in/philipjstubbs/" class="btn btn-primary" target="_blank">LinkedIn</a>
         </div>
       </div>
